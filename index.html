@@ -22,16 +22,20 @@
     container.setAttribute("class", "grid");
 
     //append elements to flex container in a 16x16 grid
-    for (let i = 0; i <= 255; i++) {
-        let square = document.createElement("div");
-        square.setAttribute("class", "square");
-        container.append(square);
+    createGrid(); 
+
+    function createGrid(gridSize = 16) {
+        for (let i = 0; i <= Math.pow(gridSize, 2) - 1; i++) {
+            let square = document.createElement("div");
+            square.setAttribute("class", "square");
+            container.append(square);
+        }
+        //Select all squares. When hovering over a square, use event listener to run function turning square black
+        let squares = document.querySelectorAll(".square");
+        //For each square in the node list, add an event listener. The listener, on a mouse over, runs a function that has the event as a parameter, sets the event attribute(square you hover over) as class black
+        squares.forEach (square => {square.addEventListener("mouseover", setBlack)});
     }
 
-    //Select all squares. When hovering over a square, use event listener to run function turning square black
-    let squares = document.querySelectorAll(".square");
-    //For each square in the node list, add an event listener. The listener, on a mouse over, runs a function that has the event as a parameter, sets the event attribute(square you hover over) as class black
-    squares.forEach (square => {square.addEventListener("mouseover", setBlack)});
     function setBlack() {
         this.classList.add("black");
     }
@@ -41,8 +45,22 @@
     //Button clears grid, removes black from class list
     let button = document.querySelector("button");
     button.addEventListener("click", () => {
+        let squares = document.querySelectorAll(".square");
         squares.forEach(square => square.classList.remove("black"));
-        prompt("Enter the number of squares per side of the new grid: ")
+        let gridSize = Number(prompt("Enter the number of squares per side of the new grid: "));
+
+        if (gridSize < 100) {
+            while (container.firstChild) {
+                container.removeChild(container.lastChild); 
+            }
+            createGrid(gridSize); 
+            return; 
+        } 
+        else {
+            return alert("Enter a number < 100"); 
+        }
     });
+
+   
 </script>
 </html>
