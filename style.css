@@ -12,12 +12,13 @@
 .flexPad {
     display: flex; 
     justify-content: center;
-    border: solid red; 
 }
 
 .grid {
     display: grid; 
-    grid-template-columns: repeat(16, minmax(25px, 1fr));
+    border: solid red; 
+    width: 400px; 
+    height: 400px; 
     grid-gap: 0px;
     
 }

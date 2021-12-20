@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,8 @@
     createGrid(); 
 
     function createGrid(gridSize = 16) {
+        container.style.gridTemplateColumns = `repeat(${gridSize}, minmax(10px, 1fr))`;
+        container.style.gridTemplateRows = `repeat(${gridSize}, minmax(10px, 1fr))`;
         for (let i = 0; i <= Math.pow(gridSize, 2) - 1; i++) {
             let square = document.createElement("div");
             square.setAttribute("class", "square");
