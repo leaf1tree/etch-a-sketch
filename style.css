@@ -5,6 +5,10 @@
 }
 
 .square {
-    border: solid black; 
+    border: .5px solid black; 
     aspect-ratio: 1; 
+}
+
+.black {
+    background-color: black; 
 }

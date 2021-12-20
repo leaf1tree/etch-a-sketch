@@ -13,7 +13,7 @@
     </div>
 </body>
 <script>
-    //set grid container
+    //set grid container and class attribute 
     let container = document.querySelector(".container");
     container.setAttribute("class", "grid");
 
@@ -23,7 +23,12 @@
         square.setAttribute("class", "square");
         container.append(square);
     }
+
+    //Select all squares. When hovering over a square, use event listener to run function turning square black
+    let squares = document.querySelectorAll(".square");
+    //For each square in the node list, add an event listener. The listener, on a mouse over, runs a function that has the event as a parameter, sets the event attribute(square you hover over) as class black
+    squares.forEach (square => {square.addEventListener("mouseover", (e) => e.target.setAttribute("class", "black"))});
     
-    
+   
 </script>
 </html>
