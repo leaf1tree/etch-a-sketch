@@ -33,10 +33,16 @@
     //For each square in the node list, add an event listener. The listener, on a mouse over, runs a function that has the event as a parameter, sets the event attribute(square you hover over) as class black
     squares.forEach (square => {square.addEventListener("mouseover", setBlack)});
     function setBlack() {
-        this.setAttribute("class", "black");
+        this.classList.add("black");
     }
     //Can also be written 
-    //squares.forEach (square => {square.addEventListener("mouseover", (e) => e.target.setAttribute("class", "black"))});
+    //squares.forEach (square => {square.addEventListener("mouseover", (e) => e.target.classList.add("black"))});
 
+    //Button clears grid, removes black from class list
+    let button = document.querySelector("button");
+    button.addEventListener("click", () => {
+        squares.forEach(square => square.classList.remove("black"));
+        prompt("Enter the number of squares per side of the new grid: ")
+    });
 </script>
 </html>
